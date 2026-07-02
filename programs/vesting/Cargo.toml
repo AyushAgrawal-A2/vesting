@@ -1,0 +1,36 @@
+[package]
+name = "vesting"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+description = "Created with Anchor"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "vesting"
+
+[dependencies]
+anchor-lang = "1.1.2"
+anchor-spl = "1.1.2"
+
+[dev-dependencies]
+litesvm = "0.13.1"
+litesvm-token = "0.13.1"
+solana-keypair = "3.0.1"
+solana-message = "3.0.1"
+solana-signer = "3.0.0"
+solana-transaction = "3.0.2"
+
+[features]
+default = []
+anchor-debug = []
+cpi = ["no-entrypoint"]
+custom-heap = []
+custom-panic = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+no-entrypoint = []
+no-log-ix-name = []
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ['cfg(target_os, values("solana"))']
