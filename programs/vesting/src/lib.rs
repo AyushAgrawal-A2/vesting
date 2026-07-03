@@ -15,11 +15,18 @@ declare_id!("C6msbnfexiVBenZyabFQrDdvBAZXfkF3RDSEMyWX3Tzx");
 pub mod vesting {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        crate::instructions::initialize::handle_initialize(ctx)
+    pub fn create(
+        ctx: Context<Create>,
+        id: u64,
+        amount: u64,
+        start: i64,
+        cliff: i64,
+        duration: u64,
+    ) -> Result<()> {
+        crate::instructions::create::handle_create(ctx, id, amount, start, cliff, duration)
     }
 
-    pub fn increment(ctx: Context<Increment>) -> Result<()> {
-        crate::instructions::increment::handle_increment(ctx)
+    pub fn claim(ctx: Context<Claim>, id: u64) -> Result<()> {
+        crate::instructions::claim::handle_claim(ctx, id)
     }
 }
